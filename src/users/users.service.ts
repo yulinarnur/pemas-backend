@@ -11,6 +11,11 @@ export class UsersService {
   }
 
   async createUser(data: Users): Promise<Users> {
+    console.log(data);
+    if (!data.username) {
+      throw new Error('Username is required');
+    }
+
     const existing = await this.prisma.users.findUnique({
       where: {
         username: data.username,
@@ -18,8 +23,9 @@ export class UsersService {
     });
 
     if (existing) {
-      throw new ConflictException('Username already exists');
+      throw new ConflictException('username already exists');
     }
+
     return this.prisma.users.create({
       data,
     });

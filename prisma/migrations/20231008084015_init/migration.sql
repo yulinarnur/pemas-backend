@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Users" (
-    "nik" INTEGER NOT NULL,
+    "nik" SERIAL NOT NULL,
     "name" VARCHAR(100) NOT NULL,
     "telp" VARCHAR(13) NOT NULL,
     "username" VARCHAR(45) NOT NULL,

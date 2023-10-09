@@ -22,7 +22,7 @@ export class AuthController {
         result: result,
       });
     } catch (err) {
-      return response.status(200).json({
+      return response.status(500).json({
         status: 'Ok',
         message: 'Internal Server Error!',
       });
@@ -43,9 +43,11 @@ export class AuthController {
         result: result,
       });
     } catch (err) {
-      return response.status(200).json({
+      console.error(err);
+      return response.status(500).json({
         status: 'Ok',
         message: 'Internal Server Error!',
+        errorDetail: err.message,
       });
     }
   }

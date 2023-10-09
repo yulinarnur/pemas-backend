@@ -38,11 +38,12 @@ export class AuthService {
   }
 
   async register(createDto: RegisterUsersDto): Promise<any> {
+    console.log(createDto);
     const createUsers = new Users();
-    createUsers.nik = createUsers.nik;
-    createUsers.name = createUsers.name;
-    createUsers.telp = createUsers.telp;
-    createUsers.username = createUsers.username;
+    createUsers.nik = createDto.nik;
+    createUsers.name = createDto.name;
+    createUsers.telp = createDto.telp;
+    createUsers.username = createDto.username;
     createUsers.password = await bcrypt.hash(createDto.password, 10);
 
     const user = await this.usersService.createUser(createUsers);
